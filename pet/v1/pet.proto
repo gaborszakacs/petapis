@@ -3,8 +3,28 @@ syntax = "proto3";
 package pet.v1;
 
 import "google/type/datetime.proto";
+import "google/api/annotations.proto";
+
+/* Protocol buffers are Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data – think XML, but smaller, faster, and simpler. You define how you want your data to be structured once, then you can use special generated source code to easily write and read your structured data to and from a variety of data streams and using a variety of languages. */
+
+service PetStoreService {
+  rpc GetPet(GetPetRequest) returns (GetPetResponse) {
+    option (google.api.http) = {
+        get: "/v1/pets/{pet_id}"
+    };
+  }
+  rpc PutPet(PutPetRequest) returns (PutPetResponse) {}
+  rpc DeletePet(DeletePetRequest) returns (DeletePetResponse) {}
+}
 
 // PetType represents the different types of pets in the pet store.
+message Pet {
+  PetType pet_type = 1;
+  string pet_id = 2;
+  string name = 3;
+  google.type.DateTime created_at = 4;
+}
+
 enum PetType {
   PET_TYPE_UNSPECIFIED = 0;
   PET_TYPE_CAT = 1;
@@ -14,12 +34,6 @@ enum PetType {
 }
 
 // Pet represents a pet in the pet store.
-message Pet {
-  PetType pet_type = 1;
-  string pet_id = 2;
-  string name = 3;
-  google.type.DateTime created_at = 4;
-}
 
 message GetPetRequest {
   string pet_id = 1;
@@ -44,8 +58,3 @@ message DeletePetRequest {
 
 message DeletePetResponse {}
 
-service PetStoreService {
-  rpc GetPet(GetPetRequest) returns (GetPetResponse) {}
-  rpc PutPet(PutPetRequest) returns (PutPetResponse) {}
-  rpc DeletePet(DeletePetRequest) returns (DeletePetResponse) {}
-}

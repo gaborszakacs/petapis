@@ -18,6 +18,10 @@ func main() {
 }
 
 func run() error {
+	// envoy is on 8082
+	// connectTo := "127.0.0.1:8082"
+
+	// server is on 8080
 	connectTo := "127.0.0.1:8080"
 	conn, err := grpc.Dial(connectTo, grpc.WithBlock(), grpc.WithInsecure())
 	if err != nil {
