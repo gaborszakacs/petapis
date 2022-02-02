@@ -7,6 +7,7 @@ import (
 
 	// This import path is based on the name declaration in the go.mod,
 	// and the gen/proto/go output location in the buf.gen.yaml.
+	// petv1 "go.buf.build/grpc/go/gaborszakacs/petapis/pet/v1"
 	petv1 "github.com/gaborszakacs/petapis/gen/proto/go/pet/v1"
 	"google.golang.org/grpc"
 )
