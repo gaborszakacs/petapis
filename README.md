@@ -37,4 +37,39 @@ curl localhost:8082/v1/pets/Bolyhos
 
 # Browse OpenAPI doc (and make JSON requests)
 http://localhost:8082/docs/
+
 ```
+
+## Connect Demo
+
+```
+# Start BE
+go run ./connect-server/main.go
+
+
+# Call it with curl
+curl \
+    --header "Content-Type: application/json" \
+    --data '{"pet_id": "pet2"}' \
+    http://localhost:8080/pet.v1.PetStoreService/GetPet
+
+
+# Call it with grpcurl
+grpcurl \
+    --plaintext \
+    --d '{"pet_id": "pet2"}' \
+    localhost:8080 \
+    pet.v1.PetStoreService/GetPet
+
+
+# Start FE
+cd ./connect-frontend && yarn dev
+
+# Make changes (e.g add age to put)
+buf push
+go get go.buf.build/bufbuild/connect-go/gaborszakacs-bitrise/pet@latest
+npm install @buf/bufbuild_connect-web_gaborszakacs-bitrise_pet
+
+```
+
+

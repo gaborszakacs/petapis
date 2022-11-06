@@ -1,5 +1,5 @@
 version: v1
-name: buf.build/gaborszakacs/petapis
+name: buf.build/gaborszakacs-bitrise/pet
 deps:
   - buf.build/googleapis/googleapis
 lint:
