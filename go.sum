@@ -55,6 +55,8 @@ github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+
 github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
 go.buf.build/bufbuild/connect-go/gaborszakacs-bitrise/pet v1.10.1 h1:UdGOOTRaPu7/d6rVW4n69AtUBkPUNWfp0dj3Lpov5DQ=
 go.buf.build/bufbuild/connect-go/gaborszakacs-bitrise/pet v1.10.1/go.mod h1:SAlnLdSNvUbQzgcph0S4L94wTE+JGLrRlPRvXcZPEco=
+go.buf.build/bufbuild/connect-go/gaborszakacs-bitrise/pet v1.10.4 h1:zoRLVHfwaoke4UGxvWSiBe3fREB7Y3rW/Homdid+c0w=
+go.buf.build/bufbuild/connect-go/gaborszakacs-bitrise/pet v1.10.4/go.mod h1:SAlnLdSNvUbQzgcph0S4L94wTE+JGLrRlPRvXcZPEco=
 go.opentelemetry.io/proto/otlp v0.7.0/go.mod h1:PqfVotwruBrMGOCsRd/89rSnXhoiJIqeYNgFYFoEGnI=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9/go.mod h1:LzIPMQfyMNhhGPhUkYOs5KpL4U8rLKemX1yGLhDgUto=

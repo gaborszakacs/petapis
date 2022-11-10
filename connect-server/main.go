@@ -2,9 +2,11 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"math/rand"
 	"net/http"
+	"time"
 
 	"github.com/bufbuild/connect-go"
 	"github.com/rs/cors"
@@ -37,6 +39,29 @@ func (s *PetServer) GetPet(
 	})
 	res.Header().Set("Pet-Version", "v1")
 	return res, nil
+}
+
+func (s *PetServer) GetPetStream(
+	ctx context.Context,
+	req *connect.Request[petv1.GetPetStreamRequest],
+	stream *connect.ServerStream[petv1.GetPetStreamResponse],
+) error {
+	for i := 0; i < 5; i++ {
+		dogNames := []string{"Fido", "Spot", "Buddy", "Barkley", "Barkley the Third", "Coco", "Max", "Duke", "Bella", "Ruby", "Bandit", "Stella"}
+		random := rand.Intn(len(dogNames))
+		name := dogNames[random]
+
+		res := &petv1.GetPetStreamResponse{
+			Pet: &petv1.Pet{Name: name, PetId: fmt.Sprintf("%d", random), PetType: petv1.PetType_PET_TYPE_DOG},
+		}
+
+		fmt.Printf("\n%d) Sending pet, but sleeping for %d sec first", i+1, random)
+		time.Sleep(time.Duration(random) * time.Second)
+
+		stream.Send(res)
+	}
+
+	return nil
 }
 
 func main() {

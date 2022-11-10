@@ -15,6 +15,7 @@ service PetStoreService {
   }
   rpc PutPet(PutPetRequest) returns (PutPetResponse) {}
   rpc DeletePet(DeletePetRequest) returns (DeletePetResponse) {}
+  rpc GetPetStream(GetPetStreamRequest) returns (stream GetPetStreamResponse) {}
 }
 
 // PetType represents the different types of pets in the pet store.
@@ -58,3 +59,8 @@ message DeletePetRequest {
 
 message DeletePetResponse {}
 
+message GetPetStreamRequest {}
+
+message GetPetStreamResponse {
+  Pet pet = 1;
+}

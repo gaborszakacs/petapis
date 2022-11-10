@@ -22,28 +22,42 @@ const client = createPromiseClient(PetStoreService, transport);
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [messages, setMessages] = useState<string[] >([]);
+  const [pets, setPets] = useState<string[] >([]);
   return <>
-    <ol>
-      {messages.map((msg, index) => (
+    <ul>
+      {pets.map((pet, index) => (
           <li key={index}>
-            {msg}
+            {pet}
           </li>
       ))}
-    </ol>
+    </ul>
+
     <form onSubmit={async (e) => {
       e.preventDefault();
       setInputValue("");
       const response = await client.getPet({
         petId: inputValue,
       });
-      setMessages((prev) => [
+      setPets((prev) => [
         ...prev,
          `#${response.pet!.petId} ${response.pet!.name}`
       ]);
     }}>
       <input value={inputValue} onChange={e => setInputValue(e.target.value)} />
       <button type="submit">Get Pet</button>
+    </form>
+
+    <form onSubmit={async (e) => {
+      e.preventDefault();
+      for await (const response of client.getPetStream({})) {
+        setPets((prev) => [
+          ...prev,
+          `#${response.pet!.petId} ${response.pet!.name}`
+        ]);
+      }
+      console.log("Stream ended");
+    }}>
+      <button type="submit">Get Pet Stream</button>
     </form>
   </>;
 }

@@ -6,7 +6,7 @@ require (
 	github.com/bufbuild/connect-go v1.1.0
 	github.com/bufbuild/connect-grpcreflect-go v1.0.0
 	github.com/rs/cors v1.8.2
-	go.buf.build/bufbuild/connect-go/gaborszakacs-bitrise/pet v1.10.1
+	go.buf.build/bufbuild/connect-go/gaborszakacs-bitrise/pet v1.10.4
 	golang.org/x/net v0.0.0-20210405180319-a5a99cb37ef4
 )
 

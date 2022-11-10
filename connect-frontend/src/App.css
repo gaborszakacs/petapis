@@ -19,10 +19,14 @@
   color: #888;
 }
 
+form {
+  display: inline;
+}
+
 button {
   margin-left: 10px;
 }
 
-ol {
+ul {
   list-style-type: none;
 }
